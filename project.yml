@@ -1,0 +1,34 @@
+name: OpenVideo
+options:
+  bundleIdPrefix: com.hussein11982
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "1"
+targets:
+  OpenVideoCore:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Sources/OpenVideoCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.hussein11982.openvideocore
+        GENERATE_INFOPLIST_FILE: YES
+  OpenVideo:
+    type: application
+    platform: iOS
+    sources:
+      - path: iOSApp
+    dependencies:
+      - target: OpenVideoCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.hussein11982.openvideo
+        PRODUCT_NAME: OpenVideo
+        INFOPLIST_KEY_CFBundleDisplayName: OpenVideo
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1"
